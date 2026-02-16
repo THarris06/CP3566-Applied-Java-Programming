@@ -1,4 +1,4 @@
-package servlet_example;
+package form_example;
 
 public enum Status {
     ONLINE,
