@@ -31,7 +31,7 @@ public class App {
     }
 
     private static <O> void pollFromQueue(Queue<? extends O> queue) {
-        
+        System.out.println();
     }
 
     public static void proceesQueue(Queue<A> queue) {
@@ -43,7 +43,7 @@ public class App {
     private static void useBox(Box<Integer> intBox) {
         System.out.println(5 + intBox.returnValue());
         Box<String> stringBox = intBox.map((integer) -> {
-            return intger.toString();
+            return integer.toString();
         });
         System.out.println("stringBox: " + stringBox.returnValue());
     }

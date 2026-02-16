@@ -1,4 +1,4 @@
-package main.java.review;
+package review;
 
 import java.util.function.Function;
 
