@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Division-Game</title>
+</head>
+<body>
+    <h1>Division Game</h1>
+    <form>
+        <inputText value="#{game.n1}" required="true" />
+        <commandButton value="Submit" action="#{game.submit}">
+            <ajax execute="@form" render=":outputStr" />
+        </commandButton>
+    </form>
+    <outputText id="greeting" value="#{game.outputStr}" />
+</body>
+</html>
