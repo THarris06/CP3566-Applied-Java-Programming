@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:ui="jakarta.faces.facelets"
+        xmlns:h="jakarta.faces.html">
+    <h:head>
+        <title>Facelets Template</title>
+        <h:outputStylesheet name="css/default.css"/>
+        <h:outputStylesheet name="css/layout.css"/>
+    </h:head>
+
+    <h:body>
+        <div id="top">
+            <ui:insert name="top">Top Section</ui:insert>
+        </div>
+        <div>
+            <div id="left">
+                <ui:insert name="left">Left Section</ui:insert>
+            </div>
+            <div id="content">
+                <ui:insert name="content">Main Content</ui:insert>
+            </div>
+        </div>
+    </h:body>
+</html>
