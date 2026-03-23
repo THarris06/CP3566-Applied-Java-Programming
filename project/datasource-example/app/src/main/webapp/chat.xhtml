@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="jakarta.faces.html"
+        xmlns:f="jakarta.faces.core"
+        xmlns:ui="jakarta.faces.facelets">
+    <h:head>
+        <title>Jakarta Facelets and JNDI DataSources</title>
+    </h:head>
+    <h:body>
+        <h2>Refresh</h2>
+        <h:form>
+            <h:commandButton value="Refresh" action="#{chatBean.pullLog}">
+                <f:ajax execute="@this" render=":chatLog"/>
+            </h:commandButton>
+            <h:messages />
+        </h:form>
+        
+        <h:panelGroup id="chatLog">
+            <ui:repeat value="#{chatBean.chatLog}" var="p">
+                <p>#{p}</p>
+            </ui:repeat>
+        </h:panelGroup>
+    </h:body>
+</html>
