@@ -10,14 +10,23 @@
     <h:body>
         <h2>Refresh</h2>
         <h:form>
-            <h:commandButton value="Refresh" action="#{chatBean.pullLog}">
+            <h:commandButton value="Refresh" action="#{messages.pullLog}">
                 <f:ajax execute="@this" render=":chatLog"/>
+            </h:commandButton>
+            <h:messages />
+        </h:form>
+
+        <h2>Post a Message</h2>
+        <h:form>
+            <h:inputText value="#{messages.message}" required="true"/>
+            <h:commandButton value="Send" action="#{messages.postMessage}">
+                <f:ajax execute="@form" render=":chatLog"/>
             </h:commandButton>
             <h:messages />
         </h:form>
         
         <h:panelGroup id="chatLog">
-            <ui:repeat value="#{chatBean.chatLog}" var="p">
+            <ui:repeat value="#{messages.chatLog}" var="p">
                 <p>#{p}</p>
             </ui:repeat>
         </h:panelGroup>
