@@ -1,7 +1,11 @@
 package rooms.rest.service;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
@@ -28,7 +32,6 @@ public class Friends {
                     PreparedStatement validateUserStmt = conn.prepareStatement(
                         "SELECT id FROM users WHERE token = ?"
                     );
-
                 ) {
                     validateUserStmt.setString(1, token);
                     ResultSet rs = validateUserStmt.executeQuery();
@@ -41,16 +44,22 @@ public class Friends {
                     if (tokenUID != sendingUID) {
                         return 2;
                     }
-                } catch (SQLException e) {
-                    // TODO: handle exception
                 }
-            } catch (SQLException e) {
-                // TODO: handle exception
+                try (
+                    PreparedStatement insertRequestStmt = conn.prepareStatement(
+                        "INSERT INTO friends (sendingUserID, receivingUserID) VALUES (?, ?)"
+                    );
+                ) {
+                    insertRequestStmt.setInt(1, sendingUID);
+                    insertRequestStmt.setInt(2, receivingUID);
+                    int inserted = insertRequestStmt.executeUpdate();
+                    return inserted == 1 ? 0 : 4;
+                } catch (SQLException e) {
+                    return 4;
+                }
             }
-        } catch (NamingException e) {
-            // TODO: handle exception
+        }  catch (NamingException | SQLException e) {
+            return 3;
         }
-
     }
-
 }
