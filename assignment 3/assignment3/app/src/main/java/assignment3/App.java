@@ -1,14 +1,36 @@
 package assignment3;
 
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+
+import org.mariadb.jdbc.client.Context;
+
+import assignment3.model.Car;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.Produces;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 // TODO: Annotate this class with a Path annotation, and set the path to "cars"
+@Path("cars")
 public class App {
 
     // TODO: Make a function called getCars that returns a List of Cars
     // TODO: Annotate that functions with a Produces annotation, and set the type to "application/json"
     // TODO: Annotate that functions with a Path annotation, and set the path to "all"
     // TODO: Annotate that functions with a GET annotation
+    @Produces("application/json")
+    @Path("all")
+    @GET
+    public ArrayList<Car> getCars() {
         // TODO: Create a new List of Cars variable and set it to a new ArrayList of Cars
-        // TODO: Use a try-catch block to create a new InitialContext and lookup the DataSource for jdbc/Cars
+        ArrayList<Car> list_of_cars = new ArrayList<Car>();
+        // TODO: Use a try-catch block to create a new InitialContext and lookup the DataSource for jdbc/Cars;
+        try {
+            Context ctx = new InitialContext("jdbc/Cars");
             // TODO: Use a try-with-resources block to create and auto-close:
                 // TODO: a connection from the data
                 // TODO: a prepared statement from the connection that selects the make, model and year columns from the cars table
@@ -20,9 +42,14 @@ public class App {
                     // TODO: set its model to the one in this row of the result set
                     // TODO: set its year to the one in this row of the result set
                     // TODO: add the car to the list you made at the start of this method
+        } catch(NamingException | SQLException e) {
+            System.out.println(e);
+        }
         // TODO: Catch NamingExceptions and SQLExceptions
             // TODO: print the stack trace of the exception
         // TODO: return the list you made at the start of this function
+        return list_of_cars;
+    }
 
     // TODO: Make a function called getCarByMake that returns a List of Cars
     // TODO: Annotate that functions with a Produces annotation, and set the type to "application/json"
