@@ -1,0 +1,48 @@
+\documentclass{article}
+
+\title{Java III Test II Instructions}
+\author{Scott R. Young}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+You are limited to using techniques and tools taught in this course (and its
+prerequisites) through lectures, examples, and evaluations.
+
+Prompt driven Generative AIs, such as Co-pilot and Claude, are
+strictly prohibited for this test.
+
+You are only to modify code that is marked with TODO comments.
+
+With a built .war file deployed on a TomEE 10 server, the test should print out
+what steps it can complete and any exceptions it encounters when you generate
+user events on the UI.
+
+\section{Instructions}
+\begin{enumerate}
+    \item Download and unzip the test2.zip file for this test.
+    \item Open the folder containing db.sql in VS Code.
+    \item Open HeidiSQL and open your MariaDB connection.
+    \item Open a query in HeidiSQL.
+    \item Copy the included db.sql file's contents into the query.
+    \item Execute the query.
+    \item Open the following file in VS Code: \\
+            \textbf{test2/src/main/webapp/WEB-INF/web.xml}.
+    \item Follow the directions there to allow your application and service to connect to your DB.
+    \item Implement the TODO comments in:\\
+            \textbf{test2/src/main/webapp/index.xhtml}\\
+            \textbf{test2/src/main/java/test2/app/ShoppingCart.java}\\
+            \textbf{test2/src/main/java/test2/app/User.java}\\
+            \textbf{test2/src/main/java/test2/service/CartRootResource.java}\\
+            \textbf{test2/src/main/java/test2/service/ItemRootResource.java}
+\end{enumerate}
+
+\section{Additional Information}
+This test is open book; open notes.
+
+You may use anything on the D2L shell, the Java SE docs, the Jakarta EE docs, the official Jakarta EE tutorials (https:
+//jakarta.ee/learn/docs/jakartaee-tutorial/current/index.html), or any notes you've written yourself ahead of time.
+
+\end{document}

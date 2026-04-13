@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core"
+      xmlns:ui="jakarta.faces.facelets">
+    <h:head>
+        <title>Test 2 UI</title>
+    </h:head>
+    <h:body>
+        <!-- //! Challenge level: Easy -->
+        <!-- TODO: Only render this panel if userLoginBean's token is null -->
+        <h:panelGroup id="login" rendered="#{userLoginBean.token == null}">
+            <h1>Login / Signup</h1>
+            <h:form>
+                <h:outputLabel for="username">
+                    <h:outputText value="Username: "/>
+                </h:outputLabel>
+                <!-- //! Challenge level: Easy -->
+                <!-- TODO: Set the userName field of the userLoginBean with an inputText. Make it required -->
+                 <h:inputText id="username" value="#{userLoginBean.userName}" required="true"/>
+                <h:outputLabel for="password">
+                    <h:outputText value="Password: "/>
+                </h:outputLabel>
+                <!-- //! Challenge level: Easy -->
+                <!-- TODO: Set the userPassword field of the userLoginBean with an inputSecret. Make it required and set redisplay to false -->
+                <h:inputSecret id="password" value="#{userLoginBean.userPassword}" required="true" redisplay="false"/>
+                <!-- //! Challenge level: Medium -->
+                <!-- TODO: Create a button with the value "Login" that calls userLoginBean's updateToken method when clicked, executes the form, and renders all -->
+                <h:commandButton value="Login" action="#{userLoginBean.updateToken()}">
+                    <f:ajax execute="@form" render="@all"/>
+                </h:commandButton>
+                <!-- //! Challenge level: Medium -->
+                <!-- TODO: Create a button with the value "Sign-Up" that calls userLoginBean's signup method when clicked, executes the form, and renders all -->
+                <h:commandButton value="Sign-Up" action="#{userLoginBean.signup()}">
+                    <f:ajax execute="@form" render="@all"/>
+                </h:commandButton>
+                <h:messages />
+                <h:outputText value="#{userLoginBean.message}" />
+            </h:form>
+        </h:panelGroup>
+        <!-- //! Challenge level: Easy -->
+        <!-- TODO: Only render this panel if userLoginBean's token is not null -->
+        <h:panelGroup id="shop" rendered="#{userLoginBean.token != null}">
+            <h:form>
+                <!-- //! Challenge level: Medium -->
+                <!-- TODO: Create a button with the value "Refresh Cart" that calls cartBean's getCartByUserId method when clicked, executes the form, and renders cart-->
+                 <h:commandButton value="Refresh Cart" action="#{cartBean.getCartByUserId()}">
+                    <f:ajax execute="@form" render="cart"/>
+                </h:commandButton>
+            </h:form>
+            <h:form>
+                <!-- //! Challenge level: Medium -->
+                <!-- TODO: Create a button with the value "Add 2L Pepsi" that calls cartBean's add2LPepsi method when clicked, executes the form, and renders cart -->
+                <h:commandButton value="Add 2L Pepsi" action="#{cartBean.add2LPepsi()}">
+                    <f:ajax execute="@form" render="cart"/>
+                </h:commandButton>
+            </h:form>
+            <h:form>
+                <!-- //! Challenge level: Medium -->
+                <!-- TODO: Create a button with the value "Add 6x710mL Pepsi" that calls cartBean's add6X710MlPepsi method when clicked, executes the form, and renders cart -->
+                <h:commandButton value="Add 6x710mL Pepsi" action="#{cartBean.add6X710MlPepsi()}">
+                    <f:ajax execute="@form" render="cart"/>
+                </h:commandButton>
+            </h:form>
+            <h:form>
+                <!-- //! Challenge level: Medium -->
+                <!-- TODO: Create a button with the value "Add 12X355mL Pepsi" that calls cartBean's add12X355MlPepsi method when clicked, executes the form, and renders cart -->
+                <h:commandButton value="Add 12X355mL Pepsi" action="#{cartBean.add12X355MlPepsi()}">
+                    <f:ajax execute="@form" render="cart"/>
+                </h:commandButton>
+            </h:form>
+            <h:form>
+                <!-- //! Challenge level: Medium -->
+                <!-- TODO: Create a button with the value "Add 591mL Pepsi" that calls cartBean's add591MlPepsi method when clicked, executes the form, and renders cart -->
+                <h:commandButton value="Add 591mL Pepsi" action="#{cartBean.add591MlPepsi()}">
+                    <f:ajax execute="@form" render="cart"/>
+                </h:commandButton>
+            </h:form>
+            <h:form>
+                <!-- //! Challenge level: Medium -->
+                <!-- TODO: Create a button with the value "Add 2L Coke" that calls cartBean's add2LCoke method when clicked, executes the form, and renders cart -->
+                <h:commandButton value="Add 2L Coke" action="#{cartBean.add2LCoke()}">
+                    <f:ajax execute="@form" render="cart"/>
+                </h:commandButton>
+            </h:form>
+            <h:form>
+                <!-- //! Challenge level: Medium -->
+                <!-- TODO: Create a button with the value "Add 6x710mL Coke" that calls cartBean's add6X710MlCoke method when clicked, executes the form, and renders cart -->
+                <h:commandButton value="Add 6x710mL Coke" action="#{cartBean.add6X710MlCoke()}">
+                    <f:ajax execute="@form" render="cart"/>
+                </h:commandButton>
+            </h:form>
+            <h:form>
+                <!-- //! Challenge level: Medium -->
+                <!-- TODO: Create a button with the value "Add 12X355mL Coke" that calls cartBean's add12X355MlCoke method when clicked, executes the form, and renders cart -->
+                <h:commandButton value="Add 12X355mL Coke" action="#{cartBean.add12X355MlCoke()}">
+                    <f:ajax execute="@form" render="cart"/>
+                </h:commandButton>
+            </h:form>
+            <h:form>
+                <!-- //! Challenge level: Medium -->
+                <!-- TODO: Create a button with the value "Add 591mL Coke" that calls cartBean's add591MlCoke method when clicked, executes the form, and renders cart -->
+                <h:commandButton value="Add 591mL Coke" action="#{cartBean.add591MlCoke()}">
+                    <f:ajax execute="@form" render="cart"/>
+                </h:commandButton>
+            </h:form>
+            <h:form>
+                <!-- //! Challenge level: Medium -->
+                <!-- TODO: Create a button with the value "Add 2L Big 8" that calls cartBean's add2LBig8 method when clicked, executes the form, and renders cart -->
+                <h:commandButton value="Add 2L Big 8" action="#{cartBean.add2LBig8()}">
+                    <f:ajax execute="@form" render="cart"/>
+                </h:commandButton>
+            </h:form>
+            <h:form>
+                <!-- //! Challenge level: Medium -->
+                <!-- TODO: Create a button with the value "Add 12X355mL Big 8" that calls cartBean's add12X355MlBig8 method when clicked, executes the form, and renders cart -->
+                <h:commandButton value="Add 12X355mL Big 8" action="#{cartBean.add12X355MlBig8()}">
+                    <f:ajax execute="@form" render="cart"/>
+                </h:commandButton>
+            </h:form>
+            <h:panelGroup id="cart">
+                <!-- //! Challenge level: Easy -->
+                <!-- TODO: Only render this panel if cartBean's cart is not null -->
+                <h:panelGroup rendered="#{cartBean.cart != null}">
+                    <ui:repeat value="#{cartBean.cart.items}" var="item">
+                        <p>
+                            <h:outputText value="#{item.toString()}"></h:outputText>
+                        </p>
+                    </ui:repeat>
+                    <p> Total: $
+                        <h:outputText value="#{cartBean.cart.subTotal / 100}"></h:outputText>
+                    </p>
+                </h:panelGroup>
+            </h:panelGroup>
+        </h:panelGroup>
+    </h:body>
+</html>
